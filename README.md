@@ -1,4 +1,10 @@
 # eslint-plugin-ottofeller
+## Install
+
+```shell
+npm install eslint-plugin-ottofeller@npm:@ottofeller/eslint-plugin-ottofeller --save-dev
+```
+
 ## Usage
 
 Add `ottofeller` to the plugins section of your eslint configuration:

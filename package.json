@@ -1,6 +1,6 @@
 {
   "name": "@ottofeller/eslint-plugin-ottofeller",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plugin utilized in ottofeller.com projects",
   "main": "lib/index.js",
   "dependencies": {

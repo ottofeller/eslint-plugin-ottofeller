@@ -28,3 +28,15 @@ Then configure the rules you want to use under the rules section.
   }
 }
 ```
+## Rules
+
+1. **ottofeller/jsx-newline-block**
+```json
+{
+  "rules": {
+    "ottofeller/jsx-newline-block": [
+      "error"
+    ]
+  }
+}
+```

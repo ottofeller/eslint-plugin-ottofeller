@@ -1,13 +1,13 @@
 {
   "name": "@ottofeller/eslint-plugin-ottofeller",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Plugin utilized in ottofeller.com projects",
   "main": "lib/index.js",
   "dependencies": {
     "requireindex": "1.1.0"
   },
-  "devDependencies": {
-    "eslint": "7.1.0"
+  "peerDependencies": {
+    "eslint": ">= 7"
   },
   "engines": {
     "node": ">=0.10.0"

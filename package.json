@@ -6,8 +6,8 @@
   "dependencies": {
     "requireindex": "1.1.0"
   },
-  "devDependencies": {
-    "eslint": "7.1.0"
+  "peerDependencies": {
+    "eslint": ">= 7"
   },
   "engines": {
     "node": ">=0.10.0"

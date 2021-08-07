@@ -2,7 +2,7 @@
 ## Install
 
 ```shell
-npm install eslint-plugin-ottofeller@npm:@ottofeller/eslint-plugin-ottofeller --save-dev
+npm install @ottofeller/eslint-plugin-ottofeller --save-dev
 ```
 
 ## Usage

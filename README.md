@@ -46,3 +46,30 @@ Then configure the rules you want to use under the rules section.
   }
 }
 ```
+
+2. **ottofeller/require-comment-before-useeffect**
+
+The rule has a single option, which is an object with `require` property. The latter is an object that defines the following options:
+* CallExpression - requires a comment before `useEffect(...)`; defaults to true.
+* MemberExpression - requires a comment before `React.useEffect(...)`; defaults to true.
+```json
+{
+  "rules": {
+    "@ottofeller/ottofeller/require-comment-before-useeffect": ["error", {
+        "require": {
+            "CallExpression": true,
+            "MemberExpression": false,
+        }
+    }],
+  }
+}
+```
+
+All the options are enabled by default. To use defaults just keep the config object off.
+```json
+{
+  "rules": {
+    "@ottofeller/ottofeller/require-comment-before-useeffect": ["error"],
+  }
+}
+```

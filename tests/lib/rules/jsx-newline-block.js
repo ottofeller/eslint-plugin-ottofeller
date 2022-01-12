@@ -1,10 +1,10 @@
 'use strict'
 
-// Requirements
+// ANCHOR Requirements
 const rule = require('../../../lib/rules/jsx-newline-block')
 const {RuleTester } = require('eslint')
 
-// Test cases
+// ANCHOR Test cases
 const validJSXElements = [
   // No empty lines around single line elements and text.
   `
@@ -509,10 +509,7 @@ const invalidJSXExpressionContainer = invalidJSXElements.map(element => {
   return element
 })
 
-//------------------------------------------------------------------------------
-// Tests
-//------------------------------------------------------------------------------
-
+// ANCHOR Tests
 const ruleTester = new RuleTester({
   parserOptions: {ecmaVersion: 6, ecmaFeatures: {jsx: true}}
 })

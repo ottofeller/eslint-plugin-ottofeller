@@ -11,7 +11,7 @@ const {RuleTester } = require('eslint')
 // Test cases
 //------------------------------------------------------------------------------
 
-const valid = [
+const validJSXElements = [
   // No empty lines around single line elements and text.
   `
   <App>
@@ -114,7 +114,7 @@ const valid = [
   `,
 ]
 
-const invalid = [
+const invalidJSXElements = [
   // No empty lines around single line elements and text.
   {
     code: `
@@ -123,6 +123,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 2}],
   },
   {
@@ -132,6 +133,7 @@ const invalid = [
       
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   {
@@ -142,6 +144,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 2}],
   },
   {
@@ -152,6 +155,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 2}],
   },
   {
@@ -162,6 +166,7 @@ const invalid = [
         Some Text
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   {
@@ -172,6 +177,7 @@ const invalid = [
 
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   {
@@ -182,6 +188,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   {
@@ -193,6 +200,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   {
@@ -204,6 +212,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   // No empty lines around an only multiline element.
@@ -216,6 +225,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 2}],
   },
   {
@@ -227,6 +237,7 @@ const invalid = [
       
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 5}],
   },
   // Text shall be separated by an empty line from a multiline element,
@@ -240,6 +251,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 2}],
   },
   {
@@ -253,6 +265,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 2}],
   },
   {
@@ -265,6 +278,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 2}],
   },
   {
@@ -276,6 +290,7 @@ const invalid = [
         Some Text
       </App>
       `,
+
     errors: [{messageId: 'require', line: 5}],
   },
   {
@@ -289,6 +304,7 @@ const invalid = [
 
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 5}],
   },
   {
@@ -301,6 +317,7 @@ const invalid = [
 
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 5}],
   },
   // Require an empty line before and after a multiline element if an adjacent element exists.
@@ -313,6 +330,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 4}],
   },
   {
@@ -324,6 +342,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 3}],
   },
   // Text elements shall not interfere with the rule logic.
@@ -337,6 +356,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 5}],
   },
   {
@@ -350,6 +370,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   {
@@ -364,6 +385,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 3}],
   },
   {
@@ -376,6 +398,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 3}],
   },
   {
@@ -389,6 +412,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 8}],
   },
   {
@@ -403,6 +427,7 @@ const invalid = [
         <div>Some Text</div>
       </App>
       `,
+
     errors: [{messageId: 'redundant', line: 9}],
   },
   {
@@ -416,6 +441,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 5}],
   },
   {
@@ -430,6 +456,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 3}, {messageId: 'require', line: 7}],
   },
   {
@@ -445,6 +472,7 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 8}],
   },
   {
@@ -460,13 +488,51 @@ const invalid = [
         </div>
       </App>
       `,
+
     errors: [{messageId: 'require', line: 3}],
   },
 ]
+
+const validJSXFragments = validJSXElements.map(
+  code => code.replaceAll('App>', '>')
+)
+
+const validJSXExpressionContainer = validJSXElements.map(
+  code => code.replaceAll('<div>Some Text</div>', `{'Some Text'}`)
+)
+
+const invalidJSXFragments = invalidJSXElements.map(element => {
+  element.code = element.code.replaceAll('App>', '>')
+  return element
+})
+
+const invalidJSXExpressionContainer = invalidJSXElements.map(element => {
+  element.code = element.code.replaceAll(
+    '<div>Some Text</div>',
+    `{'Some Text'}`,
+  )
+
+  return element
+})
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions: {ecmaVersion: 6, ecmaFeatures: {jsx: true}}})
-ruleTester.run('jsx-newline-block', rule, {valid, invalid})
+const ruleTester = new RuleTester({
+  parserOptions: {ecmaVersion: 6, ecmaFeatures: {jsx: true}}
+})
+
+ruleTester.run('jsx-newline-block', rule, {
+  valid: [
+    ...validJSXElements,
+    ...validJSXFragments,
+    ...validJSXExpressionContainer
+  ],
+
+  invalid: [
+    ...invalidJSXElements,
+    ...invalidJSXFragments,
+    ...invalidJSXExpressionContainer
+  ],
+})

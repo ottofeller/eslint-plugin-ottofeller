@@ -2,7 +2,7 @@
 
 // ANCHOR Requirements
 const rule = require('../../../lib/rules/require-comment-before-useeffect')
-const {RuleTester } = require('eslint')
+const {RuleTester} = require('eslint')
 
 // ANCHOR Test cases
 const valid = [

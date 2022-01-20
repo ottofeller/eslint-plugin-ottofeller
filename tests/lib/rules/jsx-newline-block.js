@@ -273,7 +273,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'redundant', line: 2}],
+    errors: [{messageId: 'redundant', line: 2}, {messageId: 'require', line: 2}],
   },
   {
     code: `
@@ -312,7 +312,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'redundant', line: 5}],
+    errors: [{messageId: 'redundant', line: 5}, {messageId: 'require', line: 5}],
   },
   // Require an empty line before and after a multiline element if an adjacent element exists.
   {
@@ -325,7 +325,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'require', line: 4}],
+    errors: [{messageId: 'require', line: 3}],
   },
   {
     code: `
@@ -337,7 +337,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'require', line: 3}],
+    errors: [{messageId: 'require', line: 5}],
   },
   // Text elements shall not interfere with the rule logic.
   {
@@ -351,7 +351,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'require', line: 5}],
+    errors: [{messageId: 'require', line: 3}],
   },
   {
     code: `
@@ -393,7 +393,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'require', line: 3}],
+    errors: [{messageId: 'require', line: 5}],
   },
   {
     code: `
@@ -407,7 +407,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'redundant', line: 8}],
+    errors: [{messageId: 'redundant', line: 5}],
   },
   {
     code: `
@@ -422,7 +422,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'redundant', line: 9}],
+    errors: [{messageId: 'redundant', line: 5}],
   },
   {
     code: `
@@ -451,7 +451,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'require', line: 3}, {messageId: 'require', line: 7}],
+    errors: [{messageId: 'require', line: 5}, {messageId: 'require', line: 5}],
   },
   {
     code: `
@@ -467,7 +467,7 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'require', line: 8}],
+    errors: [{messageId: 'require', line: 5}],
   },
   {
     code: `
@@ -483,30 +483,33 @@ const invalidJSXElements = [
       </App>
       `,
 
-    errors: [{messageId: 'require', line: 3}],
+    errors: [{messageId: 'require', line: 5}],
   },
 ]
 
 const validJSXFragments = validJSXElements.map(
-  code => code.replaceAll('App>', '>')
+  code => code.replace(/App>/g, '>')
 )
 
 const validJSXExpressionContainer = validJSXElements.map(
-  code => code.replaceAll('<div>Some Text</div>', `{'Some Text'}`)
+  code => code.replace(/<div>Some Text<\/div>/g, `{'Some Text'}`)
 )
 
 const invalidJSXFragments = invalidJSXElements.map(element => {
-  element.code = element.code.replaceAll('App>', '>')
-  return element
+  const newElement = Object.assign({}, element)
+  newElement.code = newElement.code.replace(/App>/g, '>')
+  return newElement
 })
 
 const invalidJSXExpressionContainer = invalidJSXElements.map(element => {
-  element.code = element.code.replaceAll(
-    '<div>Some Text</div>',
+  const newElement = Object.assign({}, element)
+
+  newElement.code = newElement.code.replace(
+    /<div>Some Text<\/div>/g,
     `{'Some Text'}`,
   )
 
-  return element
+  return newElement
 })
 
 // ANCHOR Tests

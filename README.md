@@ -40,9 +40,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
   "rules": {
-    "@ottofeller/ottofeller/jsx-newline-block": [
-      "error"
-    ]
+    "@ottofeller/ottofeller/jsx-newline-block": ["error"]
   }
 }
 ```
@@ -70,6 +68,15 @@ All the options are enabled by default. To use defaults just keep the config obj
 {
   "rules": {
     "@ottofeller/ottofeller/require-comment-before-useeffect": ["error"],
+  }
+}
+```
+
+3. **ottofeller/no-import-react**
+```json
+{
+  "rules": {
+    "@ottofeller/ottofeller/no-import-react": ["error"],
   }
 }
 ```

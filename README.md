@@ -73,6 +73,9 @@ All the options are enabled by default. To use defaults just keep the config obj
 ```
 
 3. **ottofeller/no-import-react**
+
+The rule forbids namespace and default imports from React. Named imports are encouraged.
+
 ```json
 {
   "rules": {

@@ -77,6 +77,9 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-before', line: 3}],
+    output: `const obj = {
+      foo: 1,
+    }`,
   },
   {
     code: `const obj = {
@@ -85,6 +88,9 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-after', line: 2}],
+    output: `const obj = {
+      foo: 1,
+    }`,
   },
   {
     code: `const obj = {
@@ -93,6 +99,9 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-before', line: 3}],
+    output: `const obj = {
+      foo() {return 1},
+    }`,
   },
   {
     code: `const obj = {
@@ -101,6 +110,9 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-after', line: 2}],
+    output: `const obj = {
+      foo() {return 1},
+    }`,
   },
   {
     code: `const obj = {
@@ -109,6 +121,9 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-before', line: 3}],
+    output: `const obj = {
+      foo: () => 1,
+    }`,
   },
   {
     code: `const obj = {
@@ -117,6 +132,9 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-after', line: 2}],
+    output: `const obj = {
+      foo: () => 1,
+    }`,
   },
   {
     code: `const obj = {
@@ -127,6 +145,11 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-before', line: 3}],
+    output: `const obj = {
+      foo() {
+        return 1
+      },
+    }`,
   },
   {
     code: `const obj = {
@@ -137,6 +160,11 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-after', line: 2}],
+    output: `const obj = {
+      foo() {
+        return 1
+      },
+    }`,
   },
   {
     code: `const obj = {
@@ -147,6 +175,11 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-before', line: 3}],
+    output: `const obj = {
+      foo: {
+        bar: 1,
+      },
+    }`,
   },
   {
     code: `const obj = {
@@ -157,6 +190,11 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'redundant-after', line: 2}],
+    output: `const obj = {
+      foo: {
+        bar: 1,
+      },
+    }`,
   },
 
   // No empty lines between single-line properties.
@@ -167,7 +205,11 @@ const invalid = [
       bar() {return 1},
     }`,
 
-    errors: [{messageId: 'redundant-after', line: 2}, {messageId: 'redundant-before', line: 4}],
+    errors: [{messageId: 'redundant-after', line: 2}],
+    output: `const obj = {
+      foo: 1,
+      bar() {return 1},
+    }`,
   },
   {
     code: `const bar = 2
@@ -178,7 +220,13 @@ const invalid = [
       bar,
     }`,
 
-    errors: [{messageId: 'redundant-after', line: 4}, {messageId: 'redundant-before', line: 6}],
+    errors: [{messageId: 'redundant-after', line: 4}],
+    output: `const bar = 2
+  
+    const obj = {
+      foo: () => 1,
+      bar,
+    }`,
   },
 
   // Require empty line before a multi-line element
@@ -190,7 +238,14 @@ const invalid = [
       },
     }`,
 
-    errors: [{messageId: 'require-before', line: 3}],
+    errors: [{messageId: 'require-after', line: 2}],
+    output: `const obj = {
+      foo: 1,
+
+      bar() {
+        return 1
+      },
+    }`,
   },
   {
     code: `const obj = {
@@ -202,7 +257,16 @@ const invalid = [
       },
     }`,
 
-    errors: [{messageId: 'require-after', line: 2}, {messageId: 'require-before', line: 5}],
+    errors: [{messageId: 'require-after', line: 2}],
+    output: `const obj = {
+      foo: {
+        baz: 1,
+      },
+
+      bar() {
+        return 1
+      },
+    }`,
   },
 
   // Require empty line after a multi-line element
@@ -215,6 +279,13 @@ const invalid = [
     }`,
 
     errors: [{messageId: 'require-after', line: 2}],
+    output: `const obj = {
+      foo: {
+        baz: 1,
+      },
+
+      bar: 2,
+    }`,
   },
 ]
 

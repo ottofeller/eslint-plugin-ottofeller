@@ -1,7 +1,8 @@
 'use strict'
 
 // ANCHOR Requirements
-const rule = require('../../../lib/rules/no-import-react')
+const ruleName = 'no-import-react'
+const rule = require(`../../../lib/rules/${ruleName}`)
 const {RuleTester} = require('eslint')
 
 // ANCHOR Test cases
@@ -27,4 +28,4 @@ const invalid = [
 
 // ANCHOR Tests
 const ruleTester = new RuleTester({parserOptions: {ecmaVersion: 6, sourceType: "module"}})
-ruleTester.run('no-import-react', rule, {valid, invalid})
+ruleTester.run(ruleName, rule, {valid, invalid})

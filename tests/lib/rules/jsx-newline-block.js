@@ -1,8 +1,9 @@
 'use strict'
 
 // ANCHOR Requirements
-const rule = require('../../../lib/rules/jsx-newline-block')
-const {RuleTester } = require('eslint')
+const ruleName = 'jsx-newline-block'
+const rule = require(`../../../lib/rules/${ruleName}`)
+const {RuleTester} = require('eslint')
 
 // ANCHOR Test cases
 const validJSXElements = [
@@ -517,7 +518,7 @@ const ruleTester = new RuleTester({
   parserOptions: {ecmaVersion: 6, ecmaFeatures: {jsx: true}}
 })
 
-ruleTester.run('jsx-newline-block', rule, {
+ruleTester.run(ruleName, rule, {
   valid: [
     ...validJSXElements,
     ...validJSXFragments,

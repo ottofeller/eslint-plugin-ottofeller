@@ -83,3 +83,23 @@ The rule forbids namespace and default imports from React. Named imports are enc
   }
 }
 ```
+
+
+4. **ottofeller/object-properties-multiline-padding**
+
+For multiline Object Expressions the rule requires:
+- empty lines before and after multiline properties;
+- no empty lines between single-line properties;
+- no empty lines at the start and at the end of the object.
+
+NOTE: the rule does not handle comments within Object Expressions.
+
+An autofix is available for the rule.
+
+```json
+{
+  "rules": {
+    "@ottofeller/ottofeller/object-properties-multiline-padding": ["error"],
+  }
+}
+```

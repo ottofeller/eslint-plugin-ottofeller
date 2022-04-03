@@ -1,7 +1,8 @@
 'use strict'
 
 // ANCHOR Requirements
-const rule = require('../../../lib/rules/require-comment-before-useeffect')
+const ruleName = 'require-comment-before-useeffect'
+const rule = require(`../../../lib/rules/${ruleName}`)
 const {RuleTester} = require('eslint')
 
 // ANCHOR Test cases
@@ -63,4 +64,4 @@ const invalid = [
 
 // ANCHOR Tests
 const ruleTester = new RuleTester({parserOptions: {ecmaVersion: 6}})
-ruleTester.run('require-comment-before-useeffect', rule, {valid, invalid})
+ruleTester.run(ruleName, rule, {valid, invalid})

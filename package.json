@@ -20,7 +20,7 @@
     "node": ">=0.10.0"
   },
   "author": "ottofeller.com",
-  "license": "",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ottofeller/eslint-plugin-ottofeller"

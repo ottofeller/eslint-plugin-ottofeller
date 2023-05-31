@@ -18,26 +18,12 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
-  lint:
-    name: Lint the code
-    needs: set-commit-hash
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        ref: ${{ needs.set-commit-hash.outputs.commit_hash }}
-    - uses: ottofeller/github-actions/npm-run@main
-      with:
-        node-version: 16
-        command: npm run lint
-
   test:
     name: Test the code
     needs: set-commit-hash
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         ref: ${{ needs.set-commit-hash.outputs.commit_hash }}
@@ -48,7 +34,7 @@ jobs:
 
   publish-npm:
     name: Publish the release to NPM
-    needs: [set-commit-hash, lint, test]
+    needs: [set-commit-hash, test]
     runs-on: ubuntu-latest
     steps:
       - uses: ottofeller/github-actions/publish-npm@main

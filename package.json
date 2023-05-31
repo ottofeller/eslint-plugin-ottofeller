@@ -4,7 +4,7 @@
   "description": "Plugin utilized in ottofeller.com projects",
   "main": "lib/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/_mocha --forbid-only -R progress -c tests/lib/rules/*.js"
+    "test": "mocha --forbid-only -R progress -c tests/lib/rules/*.js"
   },
   "dependencies": {
     "requireindex": "1.2.0"

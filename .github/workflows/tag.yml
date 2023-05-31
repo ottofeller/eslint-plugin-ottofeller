@@ -24,4 +24,5 @@ jobs:
         initial-version: 0.1.3
         bump-level: ${{ github.event.inputs.bump-level }}
         release-branches: master
+        update-root-package_json: true
         github-token: ${{ secrets.GITHUB_TOKEN }}
